@@ -1,0 +1,544 @@
+[gd_scene load_steps=132 format=2]
+
+[ext_resource path="res://data/Scripts/PlayerControl.gd" type="Script" id=1]
+[ext_resource path="res://data/Scripts/CameraOrbit.gd" type="Script" id=2]
+[ext_resource path="res://data/Models/godot_xbot.gltf" type="PackedScene" id=3]
+
+[sub_resource type="AnimationNodeAnimation" id=118]
+animation = "Idle-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=123]
+animation = "Jump_New-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=58]
+animation = "Back_Running-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=59]
+animation = "Back_Running-loop"
+
+[sub_resource type="AnimationNodeBlend2" id=60]
+filter_enabled = true
+filters = [ "Armature/Skeleton:Head", "Armature/Skeleton:Hips", "Armature/Skeleton:Neck", "Armature/Skeleton:RootMotion", "Armature/Skeleton:Spine", "Armature/Skeleton:Spine1", "Armature/Skeleton:Spine2" ]
+
+[sub_resource type="AnimationNodeAnimation" id=61]
+animation = "Right_Running-loop"
+
+[sub_resource type="AnimationNodeBlendTree" id=62]
+nodes/Back/node = SubResource( 59 )
+nodes/Back/position = Vector2( 196, 125 )
+nodes/Blend2/node = SubResource( 60 )
+nodes/Blend2/position = Vector2( 460, 160 )
+nodes/Left/node = SubResource( 61 )
+nodes/Left/position = Vector2( 200, 280 )
+nodes/output/position = Vector2( 680, 160 )
+node_connections = [ "output", 0, "Blend2", "Blend2", 0, "Back", "Blend2", 1, "Left" ]
+
+[sub_resource type="AnimationNodeAnimation" id=63]
+animation = "Back_Running-loop"
+
+[sub_resource type="AnimationNodeBlend2" id=64]
+filter_enabled = true
+filters = [ "Armature/Skeleton:Head", "Armature/Skeleton:Hips", "Armature/Skeleton:Neck", "Armature/Skeleton:RootMotion", "Armature/Skeleton:Spine", "Armature/Skeleton:Spine1", "Armature/Skeleton:Spine2" ]
+
+[sub_resource type="AnimationNodeAnimation" id=65]
+animation = "Left_Running-loop"
+
+[sub_resource type="AnimationNodeBlendTree" id=66]
+nodes/Back/node = SubResource( 63 )
+nodes/Back/position = Vector2( 183, 113 )
+nodes/Blend2/node = SubResource( 64 )
+nodes/Blend2/position = Vector2( 460, 140 )
+nodes/Right/node = SubResource( 65 )
+nodes/Right/position = Vector2( 160, 240 )
+nodes/output/position = Vector2( 680, 160 )
+node_connections = [ "output", 0, "Blend2", "Blend2", 0, "Back", "Blend2", 1, "Right" ]
+
+[sub_resource type="AnimationNodeAnimation" id=67]
+animation = "Front_Running-loop"
+
+[sub_resource type="AnimationNodeBlend2" id=68]
+filters = [ "Armature/Skeleton:Head", "Armature/Skeleton:Hips", "Armature/Skeleton:Neck", "Armature/Skeleton:RootMotion", "Armature/Skeleton:Spine", "Armature/Skeleton:Spine1", "Armature/Skeleton:Spine2" ]
+
+[sub_resource type="AnimationNodeAnimation" id=69]
+animation = "Front_Running-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=70]
+animation = "Left_Running-loop"
+
+[sub_resource type="AnimationNodeBlendTree" id=71]
+nodes/Blend2/node = SubResource( 68 )
+nodes/Blend2/position = Vector2( 540, 220 )
+nodes/Front/node = SubResource( 69 )
+nodes/Front/position = Vector2( 200, 140 )
+nodes/Left/node = SubResource( 70 )
+nodes/Left/position = Vector2( 200, 260 )
+nodes/output/position = Vector2( 800, 200 )
+node_connections = [ "output", 0, "Blend2", "Blend2", 0, "Front", "Blend2", 1, "Left" ]
+
+[sub_resource type="AnimationNodeBlend2" id=72]
+filter_enabled = true
+filters = [ "Armature/Skeleton:Head", "Armature/Skeleton:Hips", "Armature/Skeleton:Neck", "Armature/Skeleton:RootMotion", "Armature/Skeleton:Spine", "Armature/Skeleton:Spine1", "Armature/Skeleton:Spine2" ]
+
+[sub_resource type="AnimationNodeAnimation" id=73]
+animation = "Front_Running-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=74]
+animation = "Right_Running-loop"
+
+[sub_resource type="AnimationNodeBlendTree" id=75]
+nodes/Blend2/node = SubResource( 72 )
+nodes/Blend2/position = Vector2( 460, 140 )
+nodes/Front/node = SubResource( 73 )
+nodes/Front/position = Vector2( 160, 80 )
+nodes/Right/node = SubResource( 74 )
+nodes/Right/position = Vector2( 160, 220 )
+nodes/output/position = Vector2( 640, 160 )
+node_connections = [ "output", 0, "Blend2", "Blend2", 0, "Front", "Blend2", 1, "Right" ]
+
+[sub_resource type="AnimationNodeAnimation" id=76]
+animation = "Idle-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=77]
+animation = "Left_Running-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=78]
+animation = "Right_Running-loop"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=79]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=80]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=81]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=82]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=83]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=84]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=85]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=86]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=87]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=88]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=89]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=90]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=91]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=92]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=93]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=94]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=95]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=96]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=97]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=98]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=99]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=100]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=101]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=102]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=103]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=104]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=105]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=106]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=107]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=108]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=109]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=110]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachine" id=111]
+states/Back/node = SubResource( 58 )
+states/Back/position = Vector2( 529, 386 )
+states/BackLeft/node = SubResource( 62 )
+states/BackLeft/position = Vector2( 246, 386 )
+states/BackRight/node = SubResource( 66 )
+states/BackRight/position = Vector2( 851, 386 )
+states/Front/node = SubResource( 67 )
+states/Front/position = Vector2( 529, 79 )
+states/FrontLeft/node = SubResource( 71 )
+states/FrontLeft/position = Vector2( 246, 79 )
+states/FrontRight/node = SubResource( 75 )
+states/FrontRight/position = Vector2( 851, 79 )
+states/Idle/node = SubResource( 76 )
+states/Idle/position = Vector2( 529, 230 )
+states/Left/node = SubResource( 77 )
+states/Left/position = Vector2( 246, 230 )
+states/Right/node = SubResource( 78 )
+states/Right/position = Vector2( 851, 230 )
+transitions = [ "Idle", "Front", SubResource( 79 ), "Front", "Idle", SubResource( 80 ), "FrontRight", "Idle", SubResource( 81 ), "Idle", "FrontRight", SubResource( 82 ), "Idle", "Right", SubResource( 83 ), "Right", "Idle", SubResource( 84 ), "Idle", "BackRight", SubResource( 85 ), "BackRight", "Idle", SubResource( 86 ), "Idle", "Back", SubResource( 87 ), "Back", "Idle", SubResource( 88 ), "Idle", "BackLeft", SubResource( 89 ), "BackLeft", "Idle", SubResource( 90 ), "Idle", "Left", SubResource( 91 ), "Left", "Idle", SubResource( 92 ), "Idle", "FrontLeft", SubResource( 93 ), "FrontLeft", "Idle", SubResource( 94 ), "Front", "FrontRight", SubResource( 95 ), "FrontRight", "Right", SubResource( 96 ), "Right", "BackRight", SubResource( 97 ), "BackRight", "Back", SubResource( 98 ), "Back", "BackLeft", SubResource( 99 ), "BackLeft", "Left", SubResource( 100 ), "Left", "FrontLeft", SubResource( 101 ), "FrontLeft", "Front", SubResource( 102 ), "Front", "FrontLeft", SubResource( 103 ), "FrontLeft", "Left", SubResource( 104 ), "Left", "BackLeft", SubResource( 105 ), "BackLeft", "Back", SubResource( 106 ), "Back", "BackRight", SubResource( 107 ), "BackRight", "Right", SubResource( 108 ), "Right", "FrontRight", SubResource( 109 ), "FrontRight", "Front", SubResource( 110 ) ]
+start_node = "Idle"
+graph_offset = Vector2( 33, 75 )
+
+[sub_resource type="AnimationNodeAnimation" id=130]
+animation = "Walking Backwards-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=171]
+animation = "Walking Backwards-loop"
+
+[sub_resource type="AnimationNodeBlend2" id=172]
+filter_enabled = true
+filters = [ "Armature/Skeleton:Head", "Armature/Skeleton:Hips", "Armature/Skeleton:Neck", "Armature/Skeleton:RootMotion", "Armature/Skeleton:Spine", "Armature/Skeleton:Spine1", "Armature/Skeleton:Spine2" ]
+
+[sub_resource type="AnimationNodeAnimation" id=173]
+animation = "Right Strafe Walking (1)-loop"
+
+[sub_resource type="AnimationNodeBlendTree" id=131]
+graph_offset = Vector2( 49, -3 )
+nodes/Back/node = SubResource( 171 )
+nodes/Back/position = Vector2( 100, 40 )
+nodes/Blend2/node = SubResource( 172 )
+nodes/Blend2/position = Vector2( 460, 100 )
+nodes/Left/node = SubResource( 173 )
+nodes/Left/position = Vector2( 120, 220 )
+nodes/output/position = Vector2( 700, 160 )
+node_connections = [ "output", 0, "Blend2", "Blend2", 0, "Back", "Blend2", 1, "Left" ]
+
+[sub_resource type="AnimationNodeAnimation" id=180]
+animation = "Walking Backwards-loop"
+
+[sub_resource type="AnimationNodeBlend2" id=181]
+filter_enabled = true
+filters = [ "Armature/Skeleton:Head", "Armature/Skeleton:Hips", "Armature/Skeleton:Neck", "Armature/Skeleton:RootMotion", "Armature/Skeleton:Spine", "Armature/Skeleton:Spine1", "Armature/Skeleton:Spine2" ]
+
+[sub_resource type="AnimationNodeAnimation" id=182]
+animation = "Right Strafe Walking-loop"
+
+[sub_resource type="AnimationNodeBlendTree" id=132]
+graph_offset = Vector2( -261, -21 )
+nodes/Back/node = SubResource( 180 )
+nodes/Back/position = Vector2( -20, 40 )
+nodes/Blend2/node = SubResource( 181 )
+nodes/Blend2/position = Vector2( 400, 80 )
+nodes/Right/node = SubResource( 182 )
+nodes/Right/position = Vector2( -20, 160 )
+nodes/output/position = Vector2( 580, 100 )
+node_connections = [ "output", 0, "Blend2", "Blend2", 0, "Back", "Blend2", 1, "Right" ]
+
+[sub_resource type="AnimationNodeAnimation" id=133]
+animation = "Walking-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=174]
+animation = "Walking-loop"
+
+[sub_resource type="AnimationNodeBlend2" id=175]
+filter_enabled = true
+filters = [ "Armature/Skeleton:Head", "Armature/Skeleton:Hips", "Armature/Skeleton:Neck", "Armature/Skeleton:RootMotion", "Armature/Skeleton:Spine", "Armature/Skeleton:Spine1", "Armature/Skeleton:Spine2" ]
+
+[sub_resource type="AnimationNodeAnimation" id=176]
+animation = "Right Strafe Walking-loop"
+
+[sub_resource type="AnimationNodeBlendTree" id=134]
+graph_offset = Vector2( 1.46521, 95.7088 )
+nodes/Back/node = SubResource( 174 )
+nodes/Back/position = Vector2( 140, 120 )
+nodes/Blend2/node = SubResource( 175 )
+nodes/Blend2/position = Vector2( 480, 120 )
+nodes/Left/node = SubResource( 176 )
+nodes/Left/position = Vector2( 140, 240 )
+nodes/output/position = Vector2( 760, 120 )
+node_connections = [ "output", 0, "Blend2", "Blend2", 0, "Back", "Blend2", 1, "Left" ]
+
+[sub_resource type="AnimationNodeBlend2" id=177]
+filter_enabled = true
+filters = [ "Armature/Skeleton:Head", "Armature/Skeleton:Hips", "Armature/Skeleton:Neck", "Armature/Skeleton:RootMotion", "Armature/Skeleton:Spine", "Armature/Skeleton:Spine1", "Armature/Skeleton:Spine2" ]
+
+[sub_resource type="AnimationNodeAnimation" id=178]
+animation = "Right Strafe Walking (1)-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=179]
+animation = "Walking-loop"
+
+[sub_resource type="AnimationNodeBlendTree" id=135]
+nodes/Blend2/node = SubResource( 177 )
+nodes/Blend2/position = Vector2( 440, 100 )
+nodes/Right/node = SubResource( 178 )
+nodes/Right/position = Vector2( 120, 180 )
+nodes/front/node = SubResource( 179 )
+nodes/front/position = Vector2( 120, 40 )
+nodes/output/position = Vector2( 700, 140 )
+node_connections = [ "output", 0, "Blend2", "Blend2", 0, "front", "Blend2", 1, "Right" ]
+
+[sub_resource type="AnimationNodeAnimation" id=136]
+animation = "Idle-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=137]
+animation = "Right Strafe Walking-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=138]
+animation = "Right Strafe Walking (1)-loop"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=139]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=140]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=141]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=142]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=143]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=144]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=145]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=146]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=147]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=148]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=149]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=150]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=151]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=152]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=153]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=154]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=155]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=156]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=157]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=158]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=159]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=160]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=161]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=162]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=163]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=164]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=165]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=166]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=167]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=168]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=169]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=170]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachine" id=112]
+states/Back/node = SubResource( 130 )
+states/Back/position = Vector2( 512, 244 )
+states/BackLeft/node = SubResource( 131 )
+states/BackLeft/position = Vector2( 248, 244 )
+states/BackRight/node = SubResource( 132 )
+states/BackRight/position = Vector2( 749, 244 )
+states/Front/node = SubResource( 133 )
+states/Front/position = Vector2( 512, 10 )
+states/FrontLeft/node = SubResource( 134 )
+states/FrontLeft/position = Vector2( 248, 10 )
+states/FrontRight/node = SubResource( 135 )
+states/FrontRight/position = Vector2( 749, 10 )
+states/Idle/node = SubResource( 136 )
+states/Idle/position = Vector2( 512, 133 )
+states/Left/node = SubResource( 137 )
+states/Left/position = Vector2( 248, 133 )
+states/Right/node = SubResource( 138 )
+states/Right/position = Vector2( 749, 133 )
+transitions = [ "Idle", "Front", SubResource( 139 ), "Front", "Idle", SubResource( 140 ), "Idle", "FrontRight", SubResource( 141 ), "FrontRight", "Idle", SubResource( 142 ), "Right", "FrontRight", SubResource( 143 ), "FrontRight", "Right", SubResource( 144 ), "FrontRight", "Front", SubResource( 145 ), "Front", "FrontRight", SubResource( 146 ), "Front", "FrontLeft", SubResource( 147 ), "FrontLeft", "Front", SubResource( 148 ), "FrontLeft", "Left", SubResource( 149 ), "Left", "FrontLeft", SubResource( 150 ), "Left", "BackLeft", SubResource( 151 ), "BackLeft", "Left", SubResource( 152 ), "BackLeft", "Back", SubResource( 153 ), "Back", "BackLeft", SubResource( 154 ), "Back", "BackRight", SubResource( 155 ), "BackRight", "Back", SubResource( 156 ), "BackRight", "Right", SubResource( 157 ), "Right", "BackRight", SubResource( 158 ), "Idle", "Right", SubResource( 159 ), "Right", "Idle", SubResource( 160 ), "BackRight", "Idle", SubResource( 161 ), "Idle", "BackRight", SubResource( 162 ), "Back", "Idle", SubResource( 163 ), "Idle", "Back", SubResource( 164 ), "Idle", "BackLeft", SubResource( 165 ), "BackLeft", "Idle", SubResource( 166 ), "Left", "Idle", SubResource( 167 ), "Idle", "Left", SubResource( 168 ), "FrontLeft", "Idle", SubResource( 169 ), "Idle", "FrontLeft", SubResource( 170 ) ]
+start_node = "Idle"
+graph_offset = Vector2( 0, -60 )
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=113]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=114]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=119]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=120]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=121]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=122]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=124]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=125]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=126]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=127]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=128]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=129]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachine" id=115]
+states/Idle/node = SubResource( 118 )
+states/Idle/position = Vector2( 388, 78 )
+states/Jump/node = SubResource( 123 )
+states/Jump/position = Vector2( 388, 296 )
+states/Running/node = SubResource( 111 )
+states/Running/position = Vector2( 609, 202 )
+states/Walking/node = SubResource( 112 )
+states/Walking/position = Vector2( 151, 202 )
+transitions = [ "Running", "Walking", SubResource( 113 ), "Walking", "Running", SubResource( 114 ), "Walking", "Idle", SubResource( 119 ), "Running", "Idle", SubResource( 120 ), "Idle", "Running", SubResource( 121 ), "Idle", "Walking", SubResource( 122 ), "Jump", "Running", SubResource( 124 ), "Running", "Jump", SubResource( 125 ), "Jump", "Walking", SubResource( 126 ), "Walking", "Jump", SubResource( 127 ), "Jump", "Idle", SubResource( 128 ), "Idle", "Jump", SubResource( 129 ) ]
+start_node = "Idle"
+graph_offset = Vector2( -120, 33 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=56]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=116]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=117]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.264374
+height = 1.50222
+
+[sub_resource type="CubeMesh" id=57]
+
+[node name="KinematicBody" type="KinematicBody"]
+script = ExtResource( 1 )
+
+[node name="godot_xbot" parent="." instance=ExtResource( 3 )]
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 115 )
+anim_player = NodePath("../godot_xbot/AnimationPlayer")
+active = true
+root_motion_track = NodePath("Armature/Skeleton:RootMotion")
+parameters/playback = SubResource( 56 )
+parameters/Running/playback = SubResource( 116 )
+parameters/Running/BackLeft/Blend2/blend_amount = 0.5
+parameters/Running/BackRight/Blend2/blend_amount = 0.5
+parameters/Running/FrontLeft/Blend2/blend_amount = 0.5
+parameters/Running/FrontRight/Blend2/blend_amount = 0.5
+parameters/Walking/playback = SubResource( 117 )
+parameters/Walking/BackLeft/Blend2/blend_amount = 0.5
+parameters/Walking/BackRight/Blend2/blend_amount = 0.5
+parameters/Walking/FrontLeft/Blend2/blend_amount = 0.5
+parameters/Walking/FrontRight/Blend2/blend_amount = 0.5
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, -8.74228e-08, -8.74228e-08, -8.74228e-08, 4.37114e-08, -1, 8.74228e-08, 1, 4.37114e-08, 0, 0.66082, 0 )
+shape = SubResource( 1 )
+
+[node name="CameraOrbit" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49661, 0.0251354 )
+script = ExtResource( 2 )
+
+[node name="Camera" type="Camera" parent="CameraOrbit"]
+transform = Transform( -1, 8.74228e-08, 5.96047e-08, 8.74228e-08, 1, 8.74228e-08, -5.96046e-08, 8.74228e-08, -1, 0, 0, -2 )
+fov = 75.0
+
+[node name="MeshInstance" type="MeshInstance" parent="CameraOrbit"]
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 2 )
+visible = false
+mesh = SubResource( 57 )
+material/0 = null
+
+[editable path="godot_xbot"]
