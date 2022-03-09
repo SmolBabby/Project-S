@@ -58,5 +58,3 @@ func _physics_process(delta):
 	
 	
 	mouseDelta = Vector2()
-	
-

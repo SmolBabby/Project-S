@@ -12,7 +12,7 @@ onready var TPcam = get_node("CameraOrbit/TPCamera")
 
 var runningSpeed: float = 5.0
 var walkingSpeed: float = 2.0
-var jumpForce: float = 4.6
+var jumpForce: float = 4.2
 
 var gravity: float = 9.8
 
@@ -21,17 +21,18 @@ var vel : Vector3 = Vector3()
 
 
 func _ready():
+	#Set color to player
 	var newMaterial = get_node("godot_xbot/Armature/Skeleton/Beta_Surface").mesh.surface_get_material(0)
 	newMaterial.set("albedo_color", GlobalVar.current_PlayerColor)
 	print(newMaterial.get("albedo_color"))
 	get_node("godot_xbot/Armature/Skeleton/Beta_Surface").mesh.surface_set_material(0, newMaterial)
-	
+
+
+
 
 func _physics_process(delta):
 	if Input.is_key_pressed(KEY_ESCAPE):
-		get_tree().quit()
-	
-	
+		get_tree().change_scene("res://data/Scenes/HUD/Main_Menu/MainMenu.tscn")
 	
 	
 	var root_motion: Transform = _anim_tree.get_root_motion_transform()
@@ -52,13 +53,13 @@ func _physics_process(delta):
 		input.x -= 1
 	
 	input = input.normalized()
-
+	
 	var dir = (transform.basis.z * input.z + transform.basis.x * input.x)
-
+	
 	if Input.is_key_pressed(KEY_SHIFT):
 		vel.x = dir.x * runningSpeed
 		vel.z = dir.z * runningSpeed
-
+	
 	else:
 		vel.x = dir.x * walkingSpeed
 		vel.z = dir.z * walkingSpeed
@@ -76,10 +77,10 @@ func _physics_process(delta):
 
 
 
+
+
 func playAnimation(input):
 	
-	#if (input.x + input.z) == 0:
-		#_anim_tree["parameters/playback"].travel("Idle")
 	
 	if Input.is_key_pressed(KEY_SHIFT):
 		_anim_tree["parameters/playback"].travel("Running")
@@ -124,9 +125,7 @@ func playAnimation(input):
 		if input.z < 0 && input.x < 0:
 			_anim_tree["parameters/Walking/playback"].travel("BackRight")
 	
-	#if Input.is_action_pressed("jump") and is_on_floor():
-		
-		
+	
+	
 	if !is_on_floor():
 		_anim_tree["parameters/playback"].travel("Jump")
-

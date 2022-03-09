@@ -27,11 +27,11 @@ margin_right = 282.0
 margin_bottom = 124.0
 text = "Start"
 
-[node name="OptionButton" type="Button" parent="VBoxContainer"]
+[node name="OptionsButton" type="Button" parent="VBoxContainer"]
 margin_top = 128.0
 margin_right = 282.0
 margin_bottom = 148.0
-text = "Option"
+text = "Options"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 margin_top = 152.0
@@ -43,6 +43,7 @@ text = "Quit"
 
 [node name="LevelSelect" parent="Options/Settings" index="1"]
 text = "Beta_Flat"
+items = [ "Beta_Flat", null, false, 0, null, "Beta_Cube", null, false, 1, null ]
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 anchor_left = 0.5
@@ -56,7 +57,7 @@ grow_vertical = 2
 text = "Project S"
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/OptionButton" to="." method="_on_OptionButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_OptionButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
 [connection signal="item_selected" from="Options/Settings/LevelSelect" to="Options" method="_on_LevelSelect_item_selected"]
 
