@@ -10,6 +10,7 @@ onready var TPcam = get_node("CameraOrbit/TPCamera")
 
 #Character Variables
 
+var pp = GlobalVar
 
 var runningSpeed: float = 5.0
 var walkingSpeed: float = 2.0
@@ -29,13 +30,6 @@ func _physics_process(delta):
 	if Input.is_key_pressed(KEY_ESCAPE):
 		get_tree().quit()
 	
-	if Input.is_action_just_pressed("cam_switch"):
-		if TPcam.current == false:
-			TPcam.current = true
-			FPcam.current = false
-		else:
-			FPcam.current = true
-			TPcam.current = false
 	
 	
 	
