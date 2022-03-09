@@ -10,8 +10,6 @@ onready var TPcam = get_node("CameraOrbit/TPCamera")
 
 #Character Variables
 
-var pp = GlobalVar
-
 var runningSpeed: float = 5.0
 var walkingSpeed: float = 2.0
 var jumpForce: float = 4.6
@@ -23,7 +21,10 @@ var vel : Vector3 = Vector3()
 
 
 func _ready():
-	pass
+	var newMaterial = get_node("godot_xbot/Armature/Skeleton/Beta_Surface").mesh.surface_get_material(0)
+	newMaterial.set("albedo_color", GlobalVar.current_PlayerColor)
+	print(newMaterial.get("albedo_color"))
+	get_node("godot_xbot/Armature/Skeleton/Beta_Surface").mesh.surface_set_material(0, newMaterial)
 	
 
 func _physics_process(delta):

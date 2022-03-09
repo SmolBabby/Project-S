@@ -17,14 +17,20 @@ margin_top = 15.0
 margin_right = 220.0
 margin_bottom = 223.0
 
-[node name="Button" type="Button" parent="Settings"]
+[node name="PlayerColorPicker" type="ColorPickerButton" parent="Settings"]
 margin_right = 439.0
 margin_bottom = 20.0
+text = "Red"
+color = Color( 1, 1, 1, 1 )
+edit_alpha = false
 
-[node name="Button2" type="Button" parent="Settings"]
+[node name="LevelSelect" type="OptionButton" parent="Settings"]
 margin_top = 24.0
 margin_right = 439.0
 margin_bottom = 44.0
+text = "Level"
+items = [ "Beta_Flat", null, false, 0, null, "Beta_Cube", null, false, 1, null ]
+selected = 0
 
 [node name="BackToMain" type="Button" parent="Settings"]
 margin_top = 48.0

@@ -1,11 +1,12 @@
 extends Node
 
 
+#Red, Green, Blue
+var current_PlayerColor = Color()
+var selectedLevel = "res://data/Scenes/Levels/Testing/TestMap_FLAT.tscn"
+
+
+
 
 func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	pass

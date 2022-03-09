@@ -8,7 +8,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	get_node("Options").visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -17,11 +17,12 @@ func _ready():
 
 
 func _on_StartButton_pressed():
-	get_tree().change_scene("res://data/Scenes/Levels/Testing/TestMap_FLAT.tscn")
+	get_tree().change_scene(GlobalVar.selectedLevel)
 
 
 func _on_OptionButton_pressed():
-	get_tree().change_scene("res://data/Scenes/HUD/Main_Menu/OptionsMenu.tscn")
+	get_node("VBoxContainer").visible = false
+	get_node("Options").visible = true
 
 
 func _on_QuitButton_pressed():
