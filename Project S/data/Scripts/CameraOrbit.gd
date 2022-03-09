@@ -2,12 +2,14 @@ extends Spatial
 
 var lookSensitivity: float = 30.0
 
-var minLookAngle: float = -45.0
-var maxLookAngle: float = 65.0
+var minLookAngle: float = -60.0
+var maxLookAngle: float = 85.0
 
 var mouseDelta: Vector2 = Vector2()
 
 onready var player = get_parent()
+onready var FPcam = get_node("FPCamera")
+onready var TPcam = get_node("TPCamera")
 
 #head movement stuff
 
@@ -22,13 +24,22 @@ func _input(event):
 		mouseDelta = event.relative
 
 func _physics_process(delta):
+	if get_viewport().get_camera() == FPcam:
+		get_parent().get_node("godot_xbot").visible = false
+	else:
+		get_parent().get_node("godot_xbot").visible = true
+	
+	
+	
 	var rot = Vector3(mouseDelta.y, mouseDelta.x, 0) * lookSensitivity * delta
 	
-
 	rotation_degrees.x += rot.x
+	rotation_degrees.y = 0
+	rotation_degrees.z = 0
 	rotation_degrees.x = clamp(rotation_degrees.x, minLookAngle, maxLookAngle)
 	player.rotation_degrees.y -= rot.y
-
+	
+	
 	
 	#move the head
 	

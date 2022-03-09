@@ -44,4 +44,4 @@ environment = ExtResource( 1 )
 current = true
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.47646, 90.1738, 0 )

@@ -5,13 +5,15 @@ export(NodePath) var animationtree
 onready var _anim_tree = get_node("AnimationTree")
 
 onready var camera = get_node("CameraOrbit")
+onready var FPcam = get_node("CameraOrbit/FPCamera")
+onready var TPcam = get_node("CameraOrbit/TPCamera")
 
 #Character Variables
 
 
 var runningSpeed: float = 5.0
 var walkingSpeed: float = 2.0
-var jumpForce: float = 4
+var jumpForce: float = 4.6
 
 var gravity: float = 9.8
 
@@ -26,6 +28,14 @@ func _ready():
 func _physics_process(delta):
 	if Input.is_key_pressed(KEY_ESCAPE):
 		get_tree().quit()
+	
+	if Input.is_action_just_pressed("cam_switch"):
+		if TPcam.current == false:
+			TPcam.current = true
+			FPcam.current = false
+		else:
+			FPcam.current = true
+			TPcam.current = false
 	
 	
 	
@@ -61,8 +71,9 @@ func _physics_process(delta):
 	
 	vel.y -= gravity * delta
 	
-	if Input.is_action_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor():
 		vel.y = jumpForce
+		_anim_tree["parameters/playback"].travel("Jump")
 	
 	playAnimation(input)
 	
@@ -118,9 +129,9 @@ func playAnimation(input):
 		if input.z < 0 && input.x < 0:
 			_anim_tree["parameters/Walking/playback"].travel("BackRight")
 	
-	if Input.is_action_pressed("jump") and is_on_floor():
+	#if Input.is_action_pressed("jump") and is_on_floor():
 		
-		_anim_tree["parameters/playback"].travel("Jump")
+		
 	if !is_on_floor():
 		_anim_tree["parameters/playback"].travel("Jump")
 
