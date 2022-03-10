@@ -18,7 +18,8 @@ func _ready():
 
 
 func _on_StartButton_pressed():
-	get_tree().change_scene(GlobalVar.selectedLevel)
+	#get_tree().change_scene(GlobalVar.selectedLevel)
+	pass
 
 
 func _on_OptionButton_pressed():

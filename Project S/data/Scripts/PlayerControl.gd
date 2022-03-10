@@ -24,7 +24,6 @@ func _ready():
 	#Set color to player
 	var newMaterial = get_node("godot_xbot/Armature/Skeleton/Beta_Surface").mesh.surface_get_material(0)
 	newMaterial.set("albedo_color", GlobalVar.current_PlayerColor)
-	print(newMaterial.get("albedo_color"))
 	get_node("godot_xbot/Armature/Skeleton/Beta_Surface").mesh.surface_set_material(0, newMaterial)
 
 

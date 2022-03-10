@@ -45,6 +45,12 @@ text = "Quit"
 text = "Beta_Flat"
 items = [ "Beta_Flat", null, false, 0, null, "Beta_Cube", null, false, 1, null ]
 
+[node name="Settings_2" parent="Options" index="1"]
+visible = false
+
+[node name="Settings_3" parent="Options" index="2"]
+visible = false
+
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5

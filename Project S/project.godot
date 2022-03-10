@@ -16,8 +16,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
-GlobalVar="*res://data/Scripts/Global_Variables.gd"
-Network="*res://data/Scripts/Networking/Network.gd"
+GlobalVar="res://data/Scripts/Global_Variables.gd"
+Server="*res://server/server.gd"
 
 [display]
 
