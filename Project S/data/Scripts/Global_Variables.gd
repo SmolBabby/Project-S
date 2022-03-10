@@ -2,11 +2,11 @@ extends Node
 
 
 #Red, Green, Blue
-var current_PlayerColor = Color()
-var selectedLevel = "res://data/Scenes/Levels/Testing/TestMap_FLAT.tscn"
+var current_PlayerColor:Color
+var selectedLevel:String
 
-
+var shadows:bool = true
 
 
 func _ready():
-	pass
+	selectedLevel = "res://data/Scenes/Levels/Testing/TestMap_FLAT.tscn"

@@ -28,7 +28,7 @@ material/0 = SubResource( 2 )
 transform = Transform( 32, 0, 0, 0, 1, 0, 0, 0, 32, 0, 0, 0 )
 shape = SubResource( 3 )
 
-[node name="DirectionalLight" type="DirectionalLight" parent="."]
+[node name="Light" type="DirectionalLight" parent="."]
 transform = Transform( 1, -6.94287e-08, 3.42964e-08, -7.63105e-08, -0.808237, 0.588858, -1.3164e-08, -0.588858, -0.808237, -0.332461, 3.43539, -2.48531 )
 light_energy = 1.881
 light_specular = 2.0

@@ -41,7 +41,7 @@ text = "Quit"
 
 [node name="Options" parent="." instance=ExtResource( 2 )]
 
-[node name="LevelSelect" parent="Options/Settings" index="1"]
+[node name="LevelSelect" parent="Options/Settings_1" index="1"]
 text = "Beta_Flat"
 items = [ "Beta_Flat", null, false, 0, null, "Beta_Cube", null, false, 1, null ]
 
@@ -51,14 +51,14 @@ anchor_right = 0.5
 margin_left = -84.0
 margin_top = 62.0
 margin_right = 84.0
-margin_bottom = 124.0
+margin_bottom = 77.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Project S"
+fit_content_height = true
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_OptionButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
-[connection signal="item_selected" from="Options/Settings/LevelSelect" to="Options" method="_on_LevelSelect_item_selected"]
 
 [editable path="Options"]

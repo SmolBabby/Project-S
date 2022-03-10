@@ -6,8 +6,11 @@
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Settings" type="VBoxContainer" parent="."]
+[node name="Settings_1" type="VBoxContainer" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -17,14 +20,14 @@ margin_top = 15.0
 margin_right = 220.0
 margin_bottom = 223.0
 
-[node name="PlayerColorPicker" type="ColorPickerButton" parent="Settings"]
+[node name="PlayerColorPicker" type="ColorPickerButton" parent="Settings_1"]
 margin_right = 439.0
 margin_bottom = 20.0
 text = "Red"
 color = Color( 1, 1, 1, 1 )
 edit_alpha = false
 
-[node name="LevelSelect" type="OptionButton" parent="Settings"]
+[node name="LevelSelect" type="OptionButton" parent="Settings_1"]
 margin_top = 24.0
 margin_right = 439.0
 margin_bottom = 44.0
@@ -32,10 +35,44 @@ text = "Level"
 items = [ "Beta_Flat", null, false, 0, null, "Beta_Cube", null, false, 1, null ]
 selected = 0
 
-[node name="BackToMain" type="Button" parent="Settings"]
+[node name="BackToMain" type="Button" parent="Settings_1"]
 margin_top = 48.0
 margin_right = 439.0
 margin_bottom = 68.0
 text = "Back To Main Menu"
 
-[connection signal="pressed" from="Settings/BackToMain" to="." method="_on_BackToMain_pressed"]
+[node name="Settings_2" type="VBoxContainer" parent="."]
+margin_left = 293.0
+margin_top = 124.0
+margin_right = 428.0
+margin_bottom = 164.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShadowCheckButton" type="CheckButton" parent="Settings_2"]
+margin_right = 135.0
+margin_bottom = 40.0
+pressed = true
+text = "Shadows"
+
+[node name="Settings_3" type="VBoxContainer" parent="."]
+margin_left = 612.0
+margin_top = 124.0
+margin_right = 738.0
+margin_bottom = 164.0
+rect_pivot_offset = Vector2( 126, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckButton" type="CheckButton" parent="Settings_3"]
+margin_right = 126.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 126, 0 )
+pressed = true
+text = "Sounds"
+
+[connection signal="item_selected" from="Settings_1/LevelSelect" to="." method="_on_LevelSelect_item_selected"]
+[connection signal="pressed" from="Settings_1/BackToMain" to="." method="_on_BackToMain_pressed"]
+[connection signal="toggled" from="Settings_2/ShadowCheckButton" to="." method="_on_ShadowCheckButton_toggled"]
