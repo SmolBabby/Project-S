@@ -18,7 +18,7 @@ func _ready():
 
 
 func _on_StartButton_pressed():
-	get_tree().change_scene(GlobalVar.selectedLevel)
+	get_tree().change_scene("res://data/Scenes/HUD/Main_Menu/LoginMenu.tscn")
 
 
 func _on_OptionButton_pressed():

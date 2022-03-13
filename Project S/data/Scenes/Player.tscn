@@ -1,7 +1,6 @@
-[gd_scene load_steps=132 format=2]
+[gd_scene load_steps=131 format=2]
 
 [ext_resource path="res://data/Scripts/PlayerControl.gd" type="Script" id=1]
-[ext_resource path="res://data/Scripts/CameraOrbit.gd" type="Script" id=2]
 [ext_resource path="res://data/Models/godot_xbot.gltf" type="PackedScene" id=3]
 [ext_resource path="res://data/default_env.tres" type="Environment" id=4]
 
@@ -32,7 +31,7 @@ nodes/Blend2/position = Vector2( 460, 160 )
 nodes/Left/node = SubResource( 61 )
 nodes/Left/position = Vector2( 200, 280 )
 nodes/output/position = Vector2( 680, 160 )
-node_connections = [ "output", 0, "Blend2", "Blend2", 0, "Back", "Blend2", 1, "Left" ]
+node_connections = [ "Blend2", 0, "Back", "Blend2", 1, "Left", "output", 0, "Blend2" ]
 
 [sub_resource type="AnimationNodeAnimation" id=63]
 animation = "Back_Running-loop"
@@ -52,7 +51,7 @@ nodes/Blend2/position = Vector2( 460, 140 )
 nodes/Right/node = SubResource( 65 )
 nodes/Right/position = Vector2( 160, 240 )
 nodes/output/position = Vector2( 680, 160 )
-node_connections = [ "output", 0, "Blend2", "Blend2", 0, "Back", "Blend2", 1, "Right" ]
+node_connections = [ "Blend2", 0, "Back", "Blend2", 1, "Right", "output", 0, "Blend2" ]
 
 [sub_resource type="AnimationNodeAnimation" id=67]
 animation = "Front_Running-loop"
@@ -74,7 +73,7 @@ nodes/Front/position = Vector2( 200, 140 )
 nodes/Left/node = SubResource( 70 )
 nodes/Left/position = Vector2( 200, 260 )
 nodes/output/position = Vector2( 800, 200 )
-node_connections = [ "output", 0, "Blend2", "Blend2", 0, "Front", "Blend2", 1, "Left" ]
+node_connections = [ "Blend2", 0, "Front", "Blend2", 1, "Left", "output", 0, "Blend2" ]
 
 [sub_resource type="AnimationNodeBlend2" id=72]
 filter_enabled = true
@@ -94,7 +93,7 @@ nodes/Front/position = Vector2( 160, 80 )
 nodes/Right/node = SubResource( 74 )
 nodes/Right/position = Vector2( 160, 220 )
 nodes/output/position = Vector2( 640, 160 )
-node_connections = [ "output", 0, "Blend2", "Blend2", 0, "Front", "Blend2", 1, "Right" ]
+node_connections = [ "Blend2", 0, "Front", "Blend2", 1, "Right", "output", 0, "Blend2" ]
 
 [sub_resource type="AnimationNodeAnimation" id=76]
 animation = "Idle-loop"
@@ -246,7 +245,7 @@ nodes/Blend2/position = Vector2( 460, 100 )
 nodes/Left/node = SubResource( 173 )
 nodes/Left/position = Vector2( 120, 220 )
 nodes/output/position = Vector2( 700, 160 )
-node_connections = [ "output", 0, "Blend2", "Blend2", 0, "Back", "Blend2", 1, "Left" ]
+node_connections = [ "Blend2", 0, "Back", "Blend2", 1, "Left", "output", 0, "Blend2" ]
 
 [sub_resource type="AnimationNodeAnimation" id=180]
 animation = "Walking Backwards-loop"
@@ -267,7 +266,7 @@ nodes/Blend2/position = Vector2( 400, 80 )
 nodes/Right/node = SubResource( 182 )
 nodes/Right/position = Vector2( -20, 160 )
 nodes/output/position = Vector2( 580, 100 )
-node_connections = [ "output", 0, "Blend2", "Blend2", 0, "Back", "Blend2", 1, "Right" ]
+node_connections = [ "Blend2", 0, "Back", "Blend2", 1, "Right", "output", 0, "Blend2" ]
 
 [sub_resource type="AnimationNodeAnimation" id=133]
 animation = "Walking-loop"
@@ -291,7 +290,7 @@ nodes/Blend2/position = Vector2( 480, 120 )
 nodes/Left/node = SubResource( 176 )
 nodes/Left/position = Vector2( 140, 240 )
 nodes/output/position = Vector2( 760, 120 )
-node_connections = [ "output", 0, "Blend2", "Blend2", 0, "Back", "Blend2", 1, "Left" ]
+node_connections = [ "Blend2", 0, "Back", "Blend2", 1, "Left", "output", 0, "Blend2" ]
 
 [sub_resource type="AnimationNodeBlend2" id=177]
 filter_enabled = true
@@ -311,7 +310,7 @@ nodes/Right/position = Vector2( 120, 180 )
 nodes/front/node = SubResource( 179 )
 nodes/front/position = Vector2( 120, 40 )
 nodes/output/position = Vector2( 700, 140 )
-node_connections = [ "output", 0, "Blend2", "Blend2", 0, "front", "Blend2", 1, "Right" ]
+node_connections = [ "Blend2", 0, "front", "Blend2", 1, "Right", "output", 0, "Blend2" ]
 
 [sub_resource type="AnimationNodeAnimation" id=136]
 animation = "Idle-loop"
@@ -532,16 +531,16 @@ shape = SubResource( 1 )
 
 [node name="CameraOrbit" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.37, 0.0327783 )
-script = ExtResource( 2 )
 
 [node name="TPCamera" type="Camera" parent="CameraOrbit"]
 transform = Transform( -1, 8.74228e-08, 5.96047e-08, 8.74228e-08, 1, 8.74228e-08, -5.96046e-08, 8.74228e-08, -1, 0, 0, -2 )
+environment = ExtResource( 4 )
+current = true
 fov = 75.0
 
 [node name="FPCamera" type="Camera" parent="CameraOrbit"]
 transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0 )
 environment = ExtResource( 4 )
-current = true
 fov = 75.0
 
 [editable path="godot_xbot"]
