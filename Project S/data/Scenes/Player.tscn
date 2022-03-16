@@ -487,13 +487,16 @@ states/Walking/node = SubResource( 112 )
 states/Walking/position = Vector2( 151, 202 )
 transitions = [ "Running", "Walking", SubResource( 113 ), "Walking", "Running", SubResource( 114 ), "Walking", "Idle", SubResource( 119 ), "Running", "Idle", SubResource( 120 ), "Idle", "Running", SubResource( 121 ), "Idle", "Walking", SubResource( 122 ), "Jump", "Running", SubResource( 124 ), "Running", "Jump", SubResource( 125 ), "Jump", "Walking", SubResource( 126 ), "Walking", "Jump", SubResource( 127 ), "Jump", "Idle", SubResource( 128 ), "Idle", "Jump", SubResource( 129 ) ]
 start_node = "Idle"
-graph_offset = Vector2( -120, 33 )
+graph_offset = Vector2( -109, 68 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=56]
+resource_local_to_scene = false
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=116]
+resource_local_to_scene = false
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=117]
+resource_local_to_scene = false
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.264374

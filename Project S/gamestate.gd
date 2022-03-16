@@ -8,5 +8,5 @@ var player_info = {
 	char_color = Color(1, 1, 1),                   # By default don't modulate the icon color
 	coords = Vector3(),
 	rotation = Vector3(),
-	anim_state = "Walking/Playback/Idle"
+	anim_state = {anim_name = "String", anim_path = "String"}
 }

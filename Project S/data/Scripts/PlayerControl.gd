@@ -1,7 +1,5 @@
 extends KinematicBody
 
-export(NodePath) var animationtree
-
 onready var _anim_tree = get_node("AnimationTree")
 
 onready var camera = get_node("CameraOrbit")
@@ -23,7 +21,6 @@ var player = self
 onready var skeleton = get_node("godot_xbot/Armature/Skeleton")
 
 
-
 #Character Variables
 
 var runningSpeed: float = 5.0
@@ -34,8 +31,9 @@ var gravity: float = 9.8
 
 var vel : Vector3 = Vector3()
 
-puppet var repl_position = Vector3()
+puppet var repl_position = Transform()
 puppet var repl_rotation = Vector3()
+
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -77,7 +75,7 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("crouch"):
 		print(Gamestate.player_info)
-		print(_anim_tree)
+
 	
 	
 	var root_motion: Transform = _anim_tree.get_root_motion_transform()
@@ -111,7 +109,6 @@ func _physics_process(delta):
 		if Input.is_key_pressed(KEY_SHIFT):
 			vel.x = dir.x * runningSpeed
 			vel.z = dir.z * runningSpeed
-		
 		else:
 			vel.x = dir.x * walkingSpeed
 			vel.z = dir.z * walkingSpeed
@@ -130,70 +127,90 @@ func _physics_process(delta):
 		# Replicate the position
 		Gamestate.player_info.anim_state = _anim_tree.get("parameters/playback")
 		Gamestate.player_info.coords = Vector3(transform.origin.x, transform.origin.y, transform.origin.z)
-		Gamestate.player_info.rotation = Vector3(camera.rotation.x, player.rotation.y, 0)
-		rset("repl_position", transform.origin)
-		rset("repl_rotation", camera.transform.origin)
+		Gamestate.player_info.rotation = Vector3(player.rotation.x, player.rotation.y, 0)
+		
+		rset("repl_position", transform)
+		rset("repl_rotation", rotation)
 	else:
 		# Take replicated variables to set current actor state
-		transform.origin = repl_position
-
+		transform = repl_position
+		rotation = repl_rotation
 
 
 
 
 func playAnimation(input):
 	
-	
 	if Input.is_key_pressed(KEY_SHIFT):
 		_anim_tree["parameters/playback"].travel("Running")
 		if (input.x + input.z) == 0:
 			_anim_tree["parameters/Running/playback"].travel("Idle")
+			
 		if input.x > 0 && input.z == 0:
 			_anim_tree["parameters/Running/playback"].travel("Left")
+			
 		if input.x < 0 && input.z == 0:
 			_anim_tree["parameters/Running/playback"].travel("Right")
+			
 		if input.z > 0 && input.x == 0:
 			_anim_tree["parameters/Running/playback"].travel("Front")
+			
 		if input.z < 0 && input.x == 0:
 			_anim_tree["parameters/Running/playback"].travel("Back")
-		
+			
 		if input.z > 0 && input.x > 0:
 			_anim_tree["parameters/Running/playback"].travel("FrontLeft")
+			
 		if input.z > 0 && input.x < 0:
 			_anim_tree["parameters/Running/playback"].travel("FrontRight")
+			
 		if input.z < 0 && input.x > 0:
 			_anim_tree["parameters/Running/playback"].travel("BackLeft")
+
+			
 		if input.z < 0 && input.x < 0:
 			_anim_tree["parameters/Running/playback"].travel("BackRight")
+	
+	
 	else:
 		_anim_tree["parameters/playback"].travel("Walking")
+		
 		if (input.x + input.z) == 0:
 			_anim_tree["parameters/Walking/playback"].travel("Idle")
+			
 		if input.x > 0 && input.z == 0:
 			_anim_tree["parameters/Walking/playback"].travel("Left")
+			
 		if input.x < 0 && input.z == 0:
 			_anim_tree["parameters/Walking/playback"].travel("Right")
+			
 		if input.z > 0 && input.x == 0:
 			_anim_tree["parameters/Walking/playback"].travel("Front")
+			
 		if input.z < 0 && input.x == 0:
 			_anim_tree["parameters/Walking/playback"].travel("Back")
-		
+			
 		if input.z > 0 && input.x > 0:
 			_anim_tree["parameters/Walking/playback"].travel("FrontLeft")
+			
 		if input.z > 0 && input.x < 0:
 			_anim_tree["parameters/Walking/playback"].travel("FrontRight")
+			
 		if input.z < 0 && input.x > 0:
 			_anim_tree["parameters/Walking/playback"].travel("BackLeft")
+			
 		if input.z < 0 && input.x < 0:
 			_anim_tree["parameters/Walking/playback"].travel("BackRight")
-	
-	
 	
 	if !is_on_floor():
 		_anim_tree["parameters/playback"].travel("Jump")
 
 
-func set_dominant_color(color, player):
-	var newMaterial = player.mesh.surface_get_material(0)
+func playAnimationOnline(anim_name, path):
+	_anim_tree[path].travel(anim_name)
+
+
+func set_dominant_color(color, p):
+	var newMaterial = p.mesh.surface_get_material(0)
 	newMaterial.set("albedo_color", color)
-	player.mesh.surface_set_material(0, newMaterial)
+	p.mesh.surface_set_material(0, newMaterial)
